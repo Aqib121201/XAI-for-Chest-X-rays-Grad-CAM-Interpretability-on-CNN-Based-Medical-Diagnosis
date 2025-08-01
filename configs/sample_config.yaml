@@ -1,0 +1,135 @@
+# Sample Configuration File for XAI Chest X-ray Analysis Project
+# Copy this file and modify as needed for your specific use case
+
+data:
+  # Dataset paths
+  raw_data_path: "data/raw"
+  processed_data_path: "data/processed"
+  external_data_path: "data/external"
+  
+  # NIH Chest X-ray dataset specific
+  nih_dataset_path: "data/raw/nih_chest_xray"
+  nih_metadata_file: "data_entries.csv"
+  nih_labels_file: "labels.csv"
+  
+  # Image processing
+  image_size: [224, 224]
+  image_channels: 3
+  normalization_mean: [0.485, 0.456, 0.406]
+  normalization_std: [0.229, 0.224, 0.225]
+  
+  # Data splitting
+  train_split: 0.7
+  val_split: 0.15
+  test_split: 0.15
+  random_seed: 42
+  
+  # Data augmentation
+  rotation_range: 15
+  horizontal_flip_prob: 0.5
+  brightness_factor: 0.2
+  contrast_factor: 0.2
+  
+  # Class balancing
+  use_smote: true
+  smote_k_neighbors: 5
+  class_weights: null
+
+model:
+  # Model architecture
+  model_name: "resnet50"
+  pretrained: true
+  num_classes: 14
+  dropout_rate: 0.5
+  
+  # Training parameters
+  batch_size: 32
+  num_epochs: 100
+  learning_rate: 0.0001
+  weight_decay: 0.0001
+  
+  # Optimizer
+  optimizer: "adam"
+  adam_beta1: 0.9
+  adam_beta2: 0.999
+  adam_epsilon: 0.00000001
+  
+  # Loss function
+  loss_function: "focal_loss"
+  focal_alpha: 1.0
+  focal_gamma: 2.0
+  
+  # Learning rate scheduling
+  lr_scheduler: "reduce_lr_on_plateau"
+  lr_patience: 10
+  lr_factor: 0.5
+  lr_min: 0.0000001
+  
+  # Early stopping
+  early_stopping_patience: 15
+  early_stopping_min_delta: 0.0001
+  
+  # Model saving
+  save_best_model: true
+  save_last_model: true
+  model_save_path: "models"
+
+explainability:
+  # Grad-CAM settings
+  gradcam_target_layer: "layer4.2.conv3"
+  gradcam_alpha: 0.4
+  
+  # SHAP settings
+  shap_background_size: 1000
+  shap_nsamples: 100
+  shap_l1_reg: "auto"
+  
+  # Visualization settings
+  heatmap_colormap: "jet"
+  heatmap_alpha: 0.6
+  save_visualizations: true
+  visualization_path: "visualizations"
+  
+  # Explanation evaluation
+  evaluate_with_radiologist_annotations: false
+  annotation_path: "data/external/radiologist_annotations"
+
+training:
+  # Hardware settings
+  device: "auto"  # "auto", "cpu", "cuda", "mps"
+  num_workers: 4
+  pin_memory: true
+  
+  # Logging and monitoring
+  log_interval: 10
+  save_interval: 5
+  tensorboard_logging: true
+  wandb_logging: false
+  wandb_project: "xai-chest-xray"
+  
+  # Validation
+  validation_interval: 1
+  validation_metrics: ["loss", "accuracy", "auroc", "precision", "recall"]
+  
+  # Checkpointing
+  checkpoint_path: "checkpoints"
+  resume_from_checkpoint: false
+  checkpoint_file: null
+
+evaluation:
+  # Metrics
+  primary_metric: "auroc"
+  secondary_metrics: ["accuracy", "precision", "recall", "f1_score"]
+  
+  # Cross-validation
+  use_cross_validation: true
+  cv_folds: 5
+  cv_strategy: "stratified"
+  
+  # Statistical testing
+  perform_statistical_tests: true
+  confidence_level: 0.95
+  
+  # Results saving
+  save_results: true
+  results_path: "results" 
