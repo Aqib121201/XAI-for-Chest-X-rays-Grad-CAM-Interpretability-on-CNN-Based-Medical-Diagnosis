@@ -1,12 +1,18 @@
 # XAI for Chest X-rays: Grad-CAM Interpretability on CNN-Based Medical Diagnosis
 
-## 🧠 Abstract
 
-This research implements an explainable artificial intelligence (XAI) framework for chest X-ray analysis using Convolutional Neural Networks (CNNs) enhanced with Gradient-weighted Class Activation Mapping (Grad-CAM) and SHAP (SHapley Additive exPlanations). The study addresses the critical need for interpretable deep learning models in clinical decision-making by providing transparent explanations for pulmonary disease classification. A ResNet50 architecture is trained on the NIH Chest X-ray dataset and augmented with explainability techniques to identify diagnostically relevant regions in radiographic images. The framework achieves competitive classification performance while maintaining clinical interpretability through heatmap visualizations and feature importance analysis.
+![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)
+![Coverage](https://img.shields.io/badge/coverage-85%25-yellowgreen)
+![Python](https://img.shields.io/badge/python-3.8+-blue)
+![Build](https://img.shields.io/badge/build-passing-brightgreen)
 
-## 🎯 Problem Statement
+##  Abstract
 
-Deep learning models have demonstrated remarkable performance in medical image analysis, particularly in chest X-ray interpretation for pulmonary disease detection. However, the "black-box" nature of these models poses significant challenges for clinical adoption, as healthcare professionals require transparent reasoning for diagnostic decisions. The lack of interpretability limits trust and regulatory approval in clinical settings. This project addresses this critical gap by implementing state-of-the-art XAI techniques to provide clinically meaningful explanations for CNN-based chest X-ray analysis.
+This research implements an explainable artificial intelligence (XAI) framework for chest X-ray analysis using Convolutional Neural Networks (CNNs) enhanced with Gradient weighted Class Activation Mapping (Grad-CAM) and SHAP (SHapley Additive exPlanations). The study addresses the critical need for interpretable deep learning models in clinical decision making by providing transparent explanations for pulmonary disease classification. A ResNet50 architecture is trained on the NIH Chest X-ray dataset and augmented with explainability techniques to identify diagnostically relevant regions in radiographic images. The framework achieves competitive classification performance while maintaining clinical interpretability through heatmap visualizations and feature importance analysis.
+
+##  Problem Statement
+
+Deep learning models have demonstrated remarkable performance in medical image analysis, particularly in chest X-ray interpretation for pulmonary disease detection. However, the "black-box" nature of these models poses significant challenges for clinical adoption, as healthcare professionals require transparent reasoning for diagnostic decisions. The lack of interpretability limits trust and regulatory approval in clinical settings. This project addresses this critical gap by implementing state of the art XAI techniques to provide clinically meaningful explanations for CNN-based chest X-ray analysis.
 
 **Clinical Context**: Chest X-rays are the most common diagnostic imaging modality worldwide, with over 2 billion examinations performed annually. Accurate and interpretable automated analysis could significantly improve diagnostic efficiency and reduce radiologist workload.
 
@@ -14,11 +20,11 @@ Deep learning models have demonstrated remarkable performance in medical image a
 - [ChestX-ray8: Hospital-scale chest X-ray database and benchmarks on weakly-supervised classification and localization of common thorax diseases](https://arxiv.org/abs/1705.02315)
 - [Grad-CAM: Visual Explanations from Deep Networks via Gradient-based Localization](https://arxiv.org/abs/1610.02391)
 
-## 📊 Dataset Description
+##  Dataset Description
 
 **Source**: NIH Chest X-ray Dataset (ChestX-ray8)
 - **License**: CC BY 4.0
-- **Size**: 112,120 frontal-view chest X-ray images from 30,805 unique patients
+- **Size**: 112,120 frontal view chest X-ray images from 30,805 unique patients
 - **Classes**: 14 common thoracic diseases + normal
 - **Image Format**: 1024×1024 pixels, grayscale
 - **Diseases**: Atelectasis, Cardiomegaly, Effusion, Infiltration, Mass, Nodule, Pneumonia, Pneumothorax, Consolidation, Edema, Emphysema, Fibrosis, Pleural Thickening, Hernia
@@ -37,7 +43,7 @@ Deep learning models have demonstrated remarkable performance in medical image a
 - Test samples: 16,818
 - Class imbalance ratio: 1:8 (normal vs. disease classes)
 
-## 🧪 Methodology
+##  Methodology
 
 ### Model Architecture
 **Base Model**: ResNet50 (pre-trained on ImageNet)
@@ -74,7 +80,7 @@ Where:
 4. **Early Stopping**: Patience of 10 epochs
 5. **Learning Rate Scheduling**: ReduceLROnPlateau
 
-## 📈 Results
+##  Results
 
 ### Classification Performance
 
@@ -99,11 +105,9 @@ Where:
 | Pneumonia | 0.889 | 0.823 | 0.801 | 0.846 |
 | Pneumothorax | 0.945 | 0.878 | 0.856 | 0.901 |
 
-![SHAP Summary Plot](./visualizations/shap_summary.png)
-![Grad-CAM Heatmaps](./visualizations/gradcam_heatmaps.png)
-![Confusion Matrix](./visualizations/confusion_matrix.png)
 
-## 🧠 Explainability / Interpretability
+
+##  Explainability / Interpretability
 
 ### Local Explanations (Grad-CAM)
 - **Spatial Localization**: Identifies diagnostically relevant regions
@@ -120,7 +124,7 @@ Where:
 - **False Positive Analysis**: Misclassifications often show heatmaps in irrelevant regions
 - **Multi-disease Detection**: Separate heatmaps for each detected condition
 
-## ⚗️ Experiments & Evaluation
+##  Experiments & Evaluation
 
 ### Ablation Studies
 1. **Architecture Comparison**: ResNet50 vs. ResNet101 vs. DenseNet121
@@ -138,7 +142,7 @@ Where:
 - **Secondary**: F1-Score, Precision, Recall
 - **Interpretability**: IoU (Intersection over Union) with radiologist annotations
 
-## 📂 Project Structure
+##  Project Structure
 
 ```
 XAI-for-Chest-X-rays-Grad-CAM-Interpretability-on-CNN-Based-Medical-Diagnosis/
@@ -186,7 +190,7 @@ XAI-for-Chest-X-rays-Grad-CAM-Interpretability-on-CNN-Based-Medical-Diagnosis/
 └── run_pipeline.py           # Main execution script
 ```
 
-## 💻 How to Run
+##  How to Run
 
 ### Prerequisites
 - Python 3.8+
@@ -197,7 +201,7 @@ XAI-for-Chest-X-rays-Grad-CAM-Interpretability-on-CNN-Based-Medical-Diagnosis/
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/XAI-for-Chest-X-rays-Grad-CAM-Interpretability-on-CNN-Based-Medical-Diagnosis.git
+git clone https://github.com/Aqib121201/XAI-for-Chest-X-rays-Grad-CAM-Interpretability-on-CNN-Based-Medical-Diagnosis.git
 cd XAI-for-Chest-X-rays-Grad-CAM-Interpretability-on-CNN-Based-Medical-Diagnosis
 
 # Create virtual environment
@@ -242,7 +246,7 @@ docker run -p 8501:8501 xai-chest-xray
 jupyter notebook notebooks/
 ```
 
-## 🧪 Unit Tests
+##  Unit Tests
 
 ```bash
 # Run all tests
@@ -257,7 +261,7 @@ pytest tests/test_data_preprocessing.py
 
 **Test Coverage**: 85% (Core modules: data preprocessing, model training, explainability)
 
-## 📚 References
+##  References
 
 1. Wang, X., Peng, Y., Lu, L., Lu, Z., Bagheri, M., & Summers, R. M. (2017). ChestX-ray8: Hospital-scale chest X-ray database and benchmarks on weakly-supervised classification and localization of common thorax diseases. *Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition*, 2097-2106.
 
@@ -271,7 +275,7 @@ pytest tests/test_data_preprocessing.py
 
 6. Lin, T. Y., Goyal, P., Girshick, R., He, K., & Dollár, P. (2017). Focal loss for dense object detection. *Proceedings of the IEEE International Conference on Computer Vision*, 2980-2988.
 
-## ⚠️ Limitations
+##  Limitations
 
 1. **Dataset Scope**: Limited to frontal-view chest X-rays; lateral views not included
 2. **Disease Coverage**: 14 common thoracic diseases; rare conditions not represented
@@ -280,31 +284,31 @@ pytest tests/test_data_preprocessing.py
 5. **Computational Requirements**: GPU memory requirements may limit deployment in resource-constrained settings
 6. **Regulatory Compliance**: Not yet FDA-approved for clinical use; requires additional validation
 
-## 📄 PDF Report
+##  PDF Report
 
 [📄 Download Full Academic Report](./report/Thesis_XAI_ChestXray.pdf)
 
-## 🧠 Contribution & Acknowledgements
+##  Contribution & Acknowledgements
 
 ### Contributors
-- **Primary Investigator**: [Your Name] - Model development and XAI implementation
-- **Clinical Advisor**: [Radiologist Name] - Medical validation and clinical insights
-- **Technical Advisor**: [Professor Name] - Research methodology and statistical analysis
+- **Lead Researcher**: Aqib Siddiqui – Model Development, XAI Implementation, Evaluation
+- **Clinical Advisor**: Dr. Mazar Hussain – Medical Validation, Radiological Insight
+  - MBBS, MD (Radiodiagnosis) 
 
 ### Acknowledgements
-- NIH for providing the ChestX-ray8 dataset
-- [University/Institution] for computational resources
-- [Funding Agency] for research support (Grant #XXXXX)
+- **Dataset**: NIH for providing the ChestX-ray8 dataset
+- **Tooling**: Support from open-source communities for PyTorch, SHAP, and Grad-CAM libraries
+- **Mentorship**: Special thanks to all faculty mentors and collaborators for their valuable feedback
 
 ### Citation
 If you use this work in your research, please cite:
 
 ```bibtex
-@article{xai_chest_xray_2024,
-  title={XAI for Chest X-rays: Grad-CAM Interpretability on CNN-Based Medical Diagnosis},
-  author={Your Name},
-  journal={arXiv preprint arXiv:XXXX.XXXXX},
-  year={2024}
+@misc{xai_chestxray_2024,
+  title     = {XAI for Chest X-rays: Grad-CAM Interpretability on CNN-Based Medical Diagnosis},
+  author    = {Aqib Siddiqui and Mazar Hussain},
+  note      = {Unpublished manuscript},
+  year      = {2024}
 }
 ```
 
@@ -312,6 +316,6 @@ If you use this work in your research, please cite:
 
 **License**: MIT License - see [LICENSE](LICENSE) file for details.
 
-**Contact**: [your.email@institution.edu](mailto:your.email@institution.edu)
+**Contact**: [siddquiaqib@gmail.com](mailto:siddquiaqib@gmail.com)
 
-**Project Status**: Active Development
+**Project Status**: Actively Maintained and Continuously Updated
