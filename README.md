@@ -284,9 +284,6 @@ pytest tests/test_data_preprocessing.py
 5. **Computational Requirements**: GPU memory requirements may limit deployment in resource-constrained settings
 6. **Regulatory Compliance**: Not yet FDA-approved for clinical use; requires additional validation
 
-##  PDF Report
-
-[📄 Download Full Academic Report](./report/Thesis_XAI_ChestXray.pdf)
 
 ##  Contribution & Acknowledgements
 
